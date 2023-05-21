@@ -3,7 +3,7 @@ using System.Xml.Linq;
 
 namespace ParcialVanessaAlfaro.DAL.Entities
 {
-    public class Tickets
+    public class Ticket
     {
         [Required]
         [Key]

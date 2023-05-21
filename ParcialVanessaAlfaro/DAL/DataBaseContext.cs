@@ -11,7 +11,7 @@ namespace ParcialVanessaAlfaro.DAL
         {
 
         }
-        public DbSet<Tickets> Tickets { get; set; }
+        public DbSet<Ticket> Ticket { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
