@@ -1,0 +1,15 @@
+{
+  "version": 2,
+  "dgSpecHash": "zTaZaEexpn6V/Nbn4R008aui9zpQN1Oei37o3NZimKwwiOuvFdM18Q6DXXTELJoBbD5DyTAQg5x5xWMgfaDGEA==",
+  "success": true,
+  "projectFilePath": "C:\\Repositorios\\VanessaAlfaro\\ParcialVanessaAlfaro\\ParcialVanessaAlfaro.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\valex\\.nuget\\packages\\microsoft.extensions.apidescription.server\\3.0.0\\microsoft.extensions.apidescription.server.3.0.0.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.2.3\\swashbuckle.aspnetcore.swaggerui.6.2.3.nupkg.sha512"
+  ],
+  "logs": []
+}
