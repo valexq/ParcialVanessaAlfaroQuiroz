@@ -13,6 +13,8 @@ namespace ParcialVanessaAlfaro.Controllers
     {
         private readonly DataBaseContext _context;
 
+
+
         public TicketsController(DataBaseContext context)
         {
             _context = context;
@@ -26,16 +28,13 @@ namespace ParcialVanessaAlfaro.Controllers
             return Ok(Ticket);
         }
 
-        //Si la boleta existe y aún no ha sido usada, entonces debe mostrar el mensaje de “Boleta válida,
-        //puede ingresar al concierto”. En esta vista, deberá actualizar los siguientes campos de esa boleta:
-        //la fecha UseDate porque es la fecha que entra al concierto, actualizar el campo IsUsed en True porque
-        //ya indica que la boleta está usada, y deberá guardar un valor (string) en el campo EntranceGate para
-        //indicar la portería por donde ingresó la persona, por ejemplo “Portería Sur”.
+
+
         [HttpPost]
-        [Route ("Edit")]
-        public async Task<IActionResult> UpdateValidation(Guid ticketId)
+        [Route("Edit/{id}")]
+        public async Task<IActionResult> EditTicket(Ticket ticket)
         {
-            var existingTicket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == ticketId);
+            var existingTicket = await _context.Ticket.FindAsync(ticket.Id);
 
             if (existingTicket != null)
             {
@@ -45,41 +44,35 @@ namespace ParcialVanessaAlfaro.Controllers
                     {
                         existingTicket.UseDate = DateTime.Now;
                         existingTicket.IsUsed = true;
+                        existingTicket.EntranceGate = ticket.EntranceGate;
+                        Random r= new Random();
+                        int numberRandom = r.Next(1, 5);
 
-                        _context.Ticket.Update(existingTicket);
-                       
-                        Random random = new Random();
-                        int numberRandom = random.Next(1, 5);
-
-                        string Entrance = "";
+                        string EntranceGate = "";
 
                         switch (numberRandom)
                         {
                             case 1:
-                                Entrance = "South";
+                                EntranceGate = "North";
                                 break;
                             case 2:
-                                Entrance = "East";
+                                EntranceGate = "South";
                                 break;
                             case 3:
-                                Entrance = "West";
+                                EntranceGate = "West";
                                 break;
                             case 4:
-                                Entrance = "North";
+                                EntranceGate = "East";
                                 break;
                             default:
                                 break;
                         }
 
-                        existingTicket.EntranceGate = Entrance;
                         _context.Ticket.Update(existingTicket);
                         await _context.SaveChangesAsync();
-                        return Conflict("Valid Ticket, You can access to the concert");
+                        return Ok("You can access to the concert");
+                       
                     }
-
-
-
-                    
                     catch (Exception e)
                     {
                         return Conflict(e.Message);
@@ -87,17 +80,13 @@ namespace ParcialVanessaAlfaro.Controllers
                 }
                 else
                 {
-                    return Conflict($"The ticket was used. Date: {existingTicket.UseDate}. EntranceGate: {existingTicket.EntranceGate}");
-
-                   
+                    return Conflict($"Ticket was used. Date: {existingTicket.UseDate}, EntranceGate: {existingTicket.EntranceGate}");
                 }
             }
             else
             {
-                return Conflict("Ticket doesn´t exists");
-
-                
+                return Conflict("Ticket does not exist");
             }
         }
     }
-    }
+}

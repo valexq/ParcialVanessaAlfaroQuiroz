@@ -15,22 +15,13 @@ namespace WebPages.Controllers
             _httpClient = httpClient;
         }
 
-
-        [HttpPut]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<IActionResult> UpdateValidation(Guid? id)
         {
-            if (id == null)
-            {
-                return BadRequest("Invalid Ticket, try again");
-            }
-
-            var url = $"https://localhost:7030/api/Tickets/Edit/";
+           
+            var url = $"https://localhost:7030/api/Tickets/Edit/{id}";
             var response = await _httpClient.CreateClient().GetAsync(url);
-
-            if (!response.IsSuccessStatusCode)
-            {
-                return NotFound("Ticket does not exists");
-            }
 
             var json = await response.Content.ReadAsStringAsync();
             var ticket = JsonConvert.DeserializeObject<Ticket>(json);
