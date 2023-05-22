@@ -31,10 +31,10 @@ namespace ParcialVanessaAlfaro.Controllers
 
 
         [HttpPost]
-        [Route("Edit/{id}")]
-        public async Task<IActionResult> EditTicket(Ticket ticket)
+        [Route("Edit")]
+        public async Task<IActionResult> UpdateValidation(Guid ticketId)
         {
-            var existingTicket = await _context.Ticket.FindAsync(ticket.Id);
+            var existingTicket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == ticketId);
 
             if (existingTicket != null)
             {
@@ -44,35 +44,41 @@ namespace ParcialVanessaAlfaro.Controllers
                     {
                         existingTicket.UseDate = DateTime.Now;
                         existingTicket.IsUsed = true;
-                        existingTicket.EntranceGate = ticket.EntranceGate;
-                        Random r= new Random();
-                        int numberRandom = r.Next(1, 5);
 
-                        string EntranceGate = "";
+                        _context.Ticket.Update(existingTicket);
+
+                        Random random = new Random();
+                        int numberRandom = random.Next(1, 5);
+
+                        string Entrance = "";
 
                         switch (numberRandom)
                         {
                             case 1:
-                                EntranceGate = "North";
+                                Entrance = "South";
                                 break;
                             case 2:
-                                EntranceGate = "South";
+                                Entrance = "East";
                                 break;
                             case 3:
-                                EntranceGate = "West";
+                                Entrance = "West";
                                 break;
                             case 4:
-                                EntranceGate = "East";
+                                Entrance = "North";
                                 break;
                             default:
                                 break;
                         }
 
+                        existingTicket.EntranceGate = Entrance;
                         _context.Ticket.Update(existingTicket);
                         await _context.SaveChangesAsync();
-                        return Ok("You can access to the concert");
-                       
+                        return Conflict("Valid Ticket, You can access to the concert");
                     }
+
+
+
+
                     catch (Exception e)
                     {
                         return Conflict(e.Message);
@@ -80,12 +86,16 @@ namespace ParcialVanessaAlfaro.Controllers
                 }
                 else
                 {
-                    return Conflict($"Ticket was used. Date: {existingTicket.UseDate}, EntranceGate: {existingTicket.EntranceGate}");
+                    return Conflict($"The ticket was used. Date: {existingTicket.UseDate}. EntranceGate: {existingTicket.EntranceGate}");
+
+
                 }
             }
             else
             {
-                return Conflict("Ticket does not exist");
+                return Conflict("Ticket doesn´t exists");
+
+
             }
         }
     }
