@@ -1,8 +1,20 @@
-﻿@{
+﻿@model Views_Tickets_Index
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1 class="display-4">Gestión de Boletería</h1>
+    <div>
+        <br> <br> <br> <br> <br>
+    <h5>Ingrese el ID de boleta para validar</h5>
+    <form action = "@Url.Action("UpdateValidation", "Tickets")" method="post">
+        <label for="ticketId">ID de Boleta:</label>
+        <input type="text" name="ticketId" id="ticketId" required />
+        <button type="submit">Validar</button>
+    </form>
+    </div>
 </div>
+
+
+

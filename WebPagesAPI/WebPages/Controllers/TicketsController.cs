@@ -9,18 +9,23 @@ namespace WebPages.Controllers
     {
         private readonly IHttpClientFactory _httpClient;
 
-        public TicketsController(IHttpClientFactory httpClient )
+        public TicketsController(IHttpClientFactory httpClient)
         {
             _httpClient = httpClient;
         }
 
-
-        public async Task<IActionResult> Index()
+   
+        
+        [HttpPut]
+        public async Task<IActionResult> UpdateValidation(Guid? id)
         {
-            var url = "https://localhost:7030/api/Tickets/GetTicketsInformation";
-            var json = await _httpClient.CreateClient().GetStringAsync(url);
-            List<Ticket> tickets = JsonConvert.DeserializeObject<List<Ticket>>(json);
-            return View(tickets);
+
+                var url = $"https://localhost:7030/api/Tickets/Edit";
+                var json = await _httpClient.CreateClient().GetStringAsync(url);
+                var ticket = JsonConvert.DeserializeObject<Ticket>(json);
+
+                return View("Index", ticket);
+            
         }
     }
-}
+    }

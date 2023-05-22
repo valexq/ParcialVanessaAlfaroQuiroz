@@ -16,17 +16,6 @@ namespace ParcialVanessaAlfaro.Controllers
         {
             _context = context;
         }
-
-        [HttpGet]
-        [Route("GetTicketsInformation")]
-        public async Task<ActionResult<IEnumerable<Ticket>>> GetTickets()
-        {
-            var tickets = await _context.Ticket.ToListAsync();
-            if (tickets == null) return NotFound();
-            return tickets;
-        }
-
-
         [HttpGet, ActionName("Get")]
         [Route("Get/{id}")]
         public async Task<ActionResult<Ticket>> GetTicketsById(Guid? id)
@@ -41,48 +30,46 @@ namespace ParcialVanessaAlfaro.Controllers
         //la fecha UseDate porque es la fecha que entra al concierto, actualizar el campo IsUsed en True porque
         //ya indica que la boleta está usada, y deberá guardar un valor (string) en el campo EntranceGate para
         //indicar la portería por donde ingresó la persona, por ejemplo “Portería Sur”.
-        [HttpPut, ActionName("Edit")]
-        [Route("Edit")]
-        public async Task<ActionResult<Ticket>> EditTicket(Guid? id, String entranceGate)
+        [HttpPost]
+        [Route ("Edit")]
+        public async Task<IActionResult> UpdateValidation(Guid ticketId)
         {
-            var ticket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == id);
+            var existingTicket = await _context.Ticket.FirstOrDefaultAsync(t => t.Id == ticketId);
 
-            if (ticket != null)
+            if (existingTicket != null)
             {
-               
-                if (ticket.IsUsed == false)
+                if (!existingTicket.IsUsed)
                 {
                     try
                     {
-                        ticket.UseDate = DateTime.Now;
-                        ticket.IsUsed = true;
-                        ticket.EntranceGate = entranceGate;
-                        _context.Ticket.Update(ticket);
+                        existingTicket.UseDate = DateTime.Now;
+                        existingTicket.IsUsed = true;
+
+                        _context.Ticket.Update(existingTicket);
                         await _context.SaveChangesAsync();
-                        return Ok("Ticket is valid. You can access to the concert");
+
+                        return Conflict("Valid Ticket, You can access to the concert");
+
+                       
                     }
-                    
                     catch (Exception e)
                     {
                         return Conflict(e.Message);
                     }
-
-                    return Ok(ticket);
-
                 }
-                return Conflict($"Ticket was used. Date {ticket.UseDate}, EntranceGate {ticket.EntranceGate}");
+                else
+                {
+                    return Conflict($"The ticket was used. Date: {existingTicket.UseDate}. EntranceGate: {existingTicket.EntranceGate}");
 
-
+                   
+                }
             }
             else
             {
-                return Conflict("Ticket does not exist");
+                return Conflict("Ticket doesn´t exists");
+
+                
             }
-
-            return NotFound();
-
         }
-
-
     }
-}
+    }
