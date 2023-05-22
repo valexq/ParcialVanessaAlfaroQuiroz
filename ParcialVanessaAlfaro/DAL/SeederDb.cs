@@ -21,7 +21,7 @@ namespace ParcialVanessaAlfaro.DAL
             {
                 for (int i = 0; i < 50000; i++)
                 {
-                    var ticket = new Ticket { UseDate = null, IsUsed = false, EntranceGate = null };
+                    var ticket = new Ticket {  IsUsed = false};
                     _context.Ticket.Add(ticket);
                 }
 
