@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using ParcialVanessaAlfaro.DAL.Entities;
 using System.Text.Json.Serialization;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace WebPages.Controllers
 {
@@ -14,18 +15,27 @@ namespace WebPages.Controllers
             _httpClient = httpClient;
         }
 
-   
-        
+
         [HttpPut]
         public async Task<IActionResult> UpdateValidation(Guid? id)
         {
+            if (id == null)
+            {
+                return BadRequest("Invalid Ticket, try again");
+            }
 
-                var url = $"https://localhost:7030/api/Tickets/Edit";
-                var json = await _httpClient.CreateClient().GetStringAsync(url);
-                var ticket = JsonConvert.DeserializeObject<Ticket>(json);
+            var url = $"https://localhost:7030/api/Tickets/Edit/";
+            var response = await _httpClient.CreateClient().GetAsync(url);
 
-                return View("Index", ticket);
-            
+            if (!response.IsSuccessStatusCode)
+            {
+                return NotFound("Ticket does not exists");
+            }
+
+            var json = await response.Content.ReadAsStringAsync();
+            var ticket = JsonConvert.DeserializeObject<Ticket>(json);
+
+            return View("Index", ticket);
         }
     }
     }

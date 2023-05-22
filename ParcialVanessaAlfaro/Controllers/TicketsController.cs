@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ParcialVanessaAlfaro.DAL;
 using ParcialVanessaAlfaro.DAL.Entities;
+using System.Net.Sockets;
 
 namespace ParcialVanessaAlfaro.Controllers
 {
@@ -46,12 +47,39 @@ namespace ParcialVanessaAlfaro.Controllers
                         existingTicket.IsUsed = true;
 
                         _context.Ticket.Update(existingTicket);
-                        await _context.SaveChangesAsync();
-
-                        return Conflict("Valid Ticket, You can access to the concert");
-
                        
+                        Random random = new Random();
+                        int numberRandom = random.Next(1, 5);
+
+                        string Entrance = "";
+
+                        switch (numberRandom)
+                        {
+                            case 1:
+                                Entrance = "South";
+                                break;
+                            case 2:
+                                Entrance = "East";
+                                break;
+                            case 3:
+                                Entrance = "West";
+                                break;
+                            case 4:
+                                Entrance = "North";
+                                break;
+                            default:
+                                break;
+                        }
+
+                        existingTicket.EntranceGate = Entrance;
+                        _context.Ticket.Update(existingTicket);
+                        await _context.SaveChangesAsync();
+                        return Conflict("Valid Ticket, You can access to the concert");
                     }
+
+
+
+                    
                     catch (Exception e)
                     {
                         return Conflict(e.Message);

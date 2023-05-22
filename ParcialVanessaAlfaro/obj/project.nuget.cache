@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "DT17NNJPj+KjbNq7vRE8ZMjGLXfGc0Aqtj207oFPmByJ5A69adCs7E7fl/v00gYGDsqp2t6w+tQ9TqGgHv2FdQ==",
+  "dgSpecHash": "u/LYnGLz6dydG2UwjXMmY82sQKP5udsixJlQUTNJbnG8s61yqzx4a1ot4m3zrsIdPcBDouwpupcOtJ310GTRWg==",
   "success": true,
   "projectFilePath": "C:\\Repositorios\\VanessaAlfaro\\ParcialVanessaAlfaro\\ParcialVanessaAlfaro.csproj",
   "expectedPackageFiles": [
@@ -44,6 +44,7 @@
     "C:\\Users\\valex\\.nuget\\packages\\microsoft.win32.registry\\5.0.0\\microsoft.win32.registry.5.0.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\microsoft.win32.systemevents\\5.0.0\\microsoft.win32.systemevents.5.0.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\mono.texttemplating\\2.2.1\\mono.texttemplating.2.2.1.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\servicestack.interfaces\\6.8.0\\servicestack.interfaces.6.8.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

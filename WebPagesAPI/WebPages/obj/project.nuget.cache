@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "sE1tqyc0ghBz3rou46jjXE7zESimFyZBTyo7Qm4pW0IdFZzQ9MqGKuZiy7al44Ut75j1kqgf52pRbuTf10PRVQ==",
+  "dgSpecHash": "wYJeZZJR95sv+wGigJEGNww03C3YyhAubQsjrgq/vi+T2ZHWNgqZ2IG0nU9yt6O4jnXkpEy63eQGqsCYU15MKA==",
   "success": true,
   "projectFilePath": "C:\\Repositorios\\VanessaAlfaro\\WebPagesAPI\\WebPages\\WebPages.csproj",
   "expectedPackageFiles": [
@@ -100,6 +100,7 @@
     "C:\\Users\\valex\\.nuget\\packages\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.14.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.04-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl\\4.3.0\\runtime.ubuntu.16.10-x64.runtime.native.system.security.cryptography.openssl.4.3.0.nupkg.sha512",
+    "C:\\Users\\valex\\.nuget\\packages\\servicestack.interfaces\\6.8.0\\servicestack.interfaces.6.8.0.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore\\6.2.3\\swashbuckle.aspnetcore.6.2.3.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.2.3\\swashbuckle.aspnetcore.swagger.6.2.3.nupkg.sha512",
     "C:\\Users\\valex\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.2.3\\swashbuckle.aspnetcore.swaggergen.6.2.3.nupkg.sha512",

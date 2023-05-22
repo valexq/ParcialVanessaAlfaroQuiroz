@@ -85,3 +85,4 @@ C:\Repositorios\VanessaAlfaro\ParcialVanessaAlfaro\obj\Debug\net6.0\refint\Parci
 C:\Repositorios\VanessaAlfaro\ParcialVanessaAlfaro\obj\Debug\net6.0\ParcialVanessaAlfaro.pdb
 C:\Repositorios\VanessaAlfaro\ParcialVanessaAlfaro\obj\Debug\net6.0\ParcialVanessaAlfaro.genruntimeconfig.cache
 C:\Repositorios\VanessaAlfaro\ParcialVanessaAlfaro\obj\Debug\net6.0\ref\ParcialVanessaAlfaro.dll
+C:\Repositorios\VanessaAlfaro\ParcialVanessaAlfaro\bin\Debug\net6.0\ServiceStack.Interfaces.dll
