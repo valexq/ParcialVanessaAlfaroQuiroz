@@ -47,24 +47,24 @@ namespace ParcialVanessaAlfaro.Controllers
 
                         _context.Ticket.Update(existingTicket);
 
-                        Random random = new Random();
-                        int numberRandom = random.Next(1, 5);
+                        Random r = new Random();
+                        int number= r.Next(1, 5);
 
                         string Entrance = "";
 
-                        switch (numberRandom)
+                        switch (number)
                         {
                             case 1:
                                 Entrance = "South";
                                 break;
                             case 2:
-                                Entrance = "East";
+                                Entrance = "North";
                                 break;
                             case 3:
                                 Entrance = "West";
                                 break;
                             case 4:
-                                Entrance = "North";
+                                Entrance = "East";
                                 break;
                             default:
                                 break;
@@ -75,9 +75,6 @@ namespace ParcialVanessaAlfaro.Controllers
                         await _context.SaveChangesAsync();
                         return Conflict("Valid Ticket, You can access to the concert");
                     }
-
-
-
 
                     catch (Exception e)
                     {
